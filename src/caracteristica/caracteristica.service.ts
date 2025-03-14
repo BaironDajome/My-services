@@ -4,8 +4,8 @@ import { CreateCaracteristicaDto } from './dto/create-caracteristica.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Caracteristica } from './entities/caracteristica.entity';
 import { Repository } from 'typeorm';
+import { UpdateCaracteristicaDto } from './dto/update-caracteristica.dto';
 import { Bahia } from 'src/bahia/entities/bahia.entity';
-// import { UpdateCaracteristicaDto } from './dto/update-caracteristica.dto';
 
 @Injectable()
 export class CaracteristicaService {
@@ -50,9 +50,9 @@ export class CaracteristicaService {
     return caracteristica;
   }
 
-  // async update(id: number, updateCaracteristicaDto: UpdateCaracteristicaDto) {
-  //   return `This action updates a #${id} bahia`;
-  // }
+  async update(id: number, updateCaracteristicaDto: UpdateCaracteristicaDto) {
+    return `This action updates a #${id} bahia ${updateCaracteristicaDto}`;
+  }
 
   async remove(id: number): Promise<void> {
     await this.caracteristicaRepository.delete(id);

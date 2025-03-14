@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
-import { BahiaService } from './bahia.service';
-import { CreateBahiaDto } from './dto/create-bahia.dto';
-=======
 /* eslint-disable prettier/prettier */
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { BahiaService } from './bahia.service';
 import { CreateBahiaDto } from './dto/create-bahia.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiParam } from '@nestjs/swagger';
->>>>>>> feacture/documentacion
+
 
 @ApiTags('Bahia')
 @Controller('bahia')
@@ -27,16 +22,13 @@ export class BahiaController {
     return this.bahiaService.create(createBahiaDto);
   }
 
-<<<<<<< HEAD
-=======
   @Get()
   @ApiOperation({ summary: 'Obtener todas las Bahías' })
   @ApiResponse({ status: 200, description: 'Listado de bahías obtenido correctamente' })
   findAll() {
     return this.bahiaService.findAll();
   }
-
->>>>>>> feacture/documentacion
+  
   @Get(':id')
   @ApiOperation({ summary: 'Obtener una Bahía por ID' })
   @ApiResponse({ status: 200, description: 'Bahía obtenida correctamente' })
@@ -45,13 +37,5 @@ export class BahiaController {
   findOne(@Param('id') id: string) {
     return this.bahiaService.findOne(+id);
   }
-<<<<<<< HEAD
-
-  @Get()
-  findAll() {
-    return this.bahiaService.findAll();
-  }
-=======
->>>>>>> feacture/documentacion
 }
 

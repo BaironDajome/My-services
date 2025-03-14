@@ -1,18 +1,10 @@
 /* eslint-disable prettier/prettier */
-<<<<<<< HEAD
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
-import { CaracteristicaService } from './caracteristica.service';
-import { CreateCaracteristicaDto } from './dto/create-caracteristica.dto';
-// import { UpdateCaracteristicaDto } from './dto/update-caracteristica.dto';
-
-=======
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { CaracteristicaService } from './caracteristica.service';
 import { CreateCaracteristicaDto } from './dto/create-caracteristica.dto';
 import { UpdateCaracteristicaDto } from './dto/update-caracteristica.dto';
 import { Caracteristica } from './entities/caracteristica.entity';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
->>>>>>> feacture/documentacion
 
 @ApiTags('Caracteristica')
 @Controller('caracteristica')
@@ -34,16 +26,6 @@ export class CaracteristicaController {
   }
 
   @Get(':id')
-<<<<<<< HEAD
-  findOne(@Param('id') id: number) {
-    return this.caracteristicaService.findOne(id);
-  }
-
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateCaracteristicaDto: UpdateCaracteristicaDto) {
-  //   return this.caracteristicaService.update(+id, updateCaracteristicaDto);
-  // }
-=======
   @ApiOperation({ summary: 'Consultar una característica por ID' })
   @ApiResponse({ status: 200, description: 'Detalles de la característica', type: Caracteristica })
   @ApiResponse({ status: 404, description: 'Característica no encontrada' })
@@ -58,7 +40,6 @@ export class CaracteristicaController {
   update(@Param('id') id: string, @Body() updateCaracteristicaDto: UpdateCaracteristicaDto) {
     return this.caracteristicaService.update(+id, updateCaracteristicaDto);
   }
->>>>>>> feacture/documentacion
 
   @Delete(':id')
   remove(@Param('id') id: number) {
