@@ -1,26 +1,31 @@
-import { Injectable } from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateBahiaDto } from './dto/create-bahia.dto';
-import { UpdateBahiaDto } from './dto/update-bahia.dto';
+import { Bahia } from './entities/bahia.entity';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class BahiaService {
-  create(createBahiaDto: CreateBahiaDto) {
-    return 'This action adds a new bahia';
+  constructor(
+    @InjectRepository(Bahia)
+    private readonly bahiaRepository: Repository<Bahia>,
+  ){}
+
+  async create(createBahiaDto: CreateBahiaDto): Promise<Bahia> {
+    const bahia = this.bahiaRepository.create(createBahiaDto);
+    return this.bahiaRepository.save(bahia);
   }
 
-  findAll() {
-    return `This action returns all bahia`;
+  async findOne(id: number): Promise<Bahia> {
+    const bahia = await this.bahiaRepository.findOne({ where: { id } });
+    if (!bahia) {
+      throw new NotFoundException(`Bahia con ID ${id} no encontrada`);
+    }
+    return bahia;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} bahia`;
-  }
-
-  update(id: number, updateBahiaDto: UpdateBahiaDto) {
-    return `This action updates a #${id} bahia`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} bahia`;
+  async findAll(): Promise<Bahia[]> {
+    return this.bahiaRepository.find();
   }
 }
