@@ -104,7 +104,6 @@ export class GeojsonCaracteristicaService {
     return datos.length > 0 ? this.transformarAGeoJSON(datos) : { message: 'No se encontraron datos' };
   }
   
-
   async filtrarDatosPorFecha(fechaInicio: string, fechaFin: string, caracteristicaId: number): Promise<any> {  
     try {
       const datos = await this.geojsonRepo.find({

@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Post, UploadedFile, UseInterceptors, Body, Get, Param, Query } from '@nestjs/common';
+import { Controller, Post, UploadedFile, UseInterceptors, Body, Get, Param } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { GeojsonCaracteristicaService } from './geojson-caracteristica.service';
 import { extname } from 'path';
@@ -51,10 +51,4 @@ export class GeojsonCaracteristicaController {
   ) {
     return this.geojsonService.filtrarDatosPorFecha(filtro.inicio, filtro.fin, filtro.caracteristicaId);
   }
-
-  // @Get('filtrar')
-  // async filtrarPorFecha(@Query('inicio') inicio: string, @Query('fin') fin: string) {
-  //   return this.geojsonService.filtrarPorFecha(inicio, fin);
-  // }
-
 }
