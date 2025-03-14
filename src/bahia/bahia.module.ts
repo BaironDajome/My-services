@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { BahiaService } from './bahia.service';
 import { BahiaController } from './bahia.controller';
@@ -8,6 +9,6 @@ import { Bahia } from './entities/bahia.entity';
   imports: [TypeOrmModule.forFeature([Bahia])],
   controllers: [BahiaController],
   providers: [BahiaService],
-  exports: [BahiaService],
+  exports: [TypeOrmModule], 
 })
 export class BahiaModule {}

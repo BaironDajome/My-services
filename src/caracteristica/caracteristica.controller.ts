@@ -1,7 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { CaracteristicaService } from './caracteristica.service';
 import { CreateCaracteristicaDto } from './dto/create-caracteristica.dto';
-import { UpdateCaracteristicaDto } from './dto/update-caracteristica.dto';
+// import { UpdateCaracteristicaDto } from './dto/update-caracteristica.dto';
+
 
 @Controller('caracteristica')
 export class CaracteristicaController {
@@ -18,17 +20,17 @@ export class CaracteristicaController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.caracteristicaService.findOne(+id);
+  findOne(@Param('id') id: number) {
+    return this.caracteristicaService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCaracteristicaDto: UpdateCaracteristicaDto) {
-    return this.caracteristicaService.update(+id, updateCaracteristicaDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateCaracteristicaDto: UpdateCaracteristicaDto) {
+  //   return this.caracteristicaService.update(+id, updateCaracteristicaDto);
+  // }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.caracteristicaService.remove(+id);
+  remove(@Param('id') id: number) {
+    return this.caracteristicaService.remove(id);
   }
 }
